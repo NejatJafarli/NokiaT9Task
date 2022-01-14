@@ -21,7 +21,7 @@
             <Button  Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" >
                 <Image Source="https://img.icons8.com/ios-filled/200/000000/long-arrow-up.png" Margin="20"/>
             </Button>
-            <Button Click="Button_Click_3" Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" >
+            <Button  Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" >
                 <Image Source="https://img.icons8.com/ios-filled/200/000000/long-arrow-right.png" Margin="20" />
             </Button>
             <Button Click="Button_Click_2" Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" Content="Add"></Button>
