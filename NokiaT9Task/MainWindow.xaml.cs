@@ -42,12 +42,25 @@ namespace NokiaT9Task
 
             Words = new List<string>();
             Words.Add("Mellim");
-            Words.Add("Tural Novruzov");
-            Words.Add("Nicat Ceferli");
+            Words.Add("Tural-Novruzov");
+            Words.Add("Nicat-Ceferli");
             Words.Add("Masin");
-            Words.Add("ComputerAcademy");
+            Words.Add("Computer-Academy");
             Words.Add("Salam");
-            Words.Add("StepItAcademy");
+            Words.Add("Step-It-Academy");
+            Words.Add("Salam-Aleykum");
+            Words.Add("Aleykum-Salam");
+            Words.Add("C#-Best");
+            Words.Add("Dot.Net-Best");
+            Words.Add("Sagol");
+            Words.Add("Hello-World");
+            Words.Add("Hello");
+            Words.Add("Telefon");
+            Words.Add("Phone");
+            Words.Add("Elon-Musk");
+            Words.Add("Tesla");
+            Words.Add("Bmw");
+            Words.Add("Mercedes");
 
 
 
@@ -60,7 +73,7 @@ namespace NokiaT9Task
 
         }
         public bool Ready { get; set; } = false;
-        
+
         private void Any_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (Ready)
@@ -70,7 +83,7 @@ namespace NokiaT9Task
             }
             if (IsBack)
             {
-                e.Handled= true;
+                e.Handled = true;
                 return;
             }
             //Text = new TextRange(MyText.Document.ContentStart,
@@ -78,7 +91,7 @@ namespace NokiaT9Task
             var StartPosition = Text.Length;
             var NewText = MyText.Text.Split(' ')[MyText.Text.Split(' ').Length - 1];
             var CursorPosition = StartPosition;
-            if (NewText=="")
+            if (NewText == "")
             {
                 e.Handled = true;
                 return;
@@ -86,7 +99,7 @@ namespace NokiaT9Task
             //Text = "SALAM";
             //MyText.SelectionStart = 2;
             //MyText.SelectionLength = Text.Length-2;
-            
+
             Task.Run(() =>
             {
                 this.Dispatcher.Invoke(() =>
@@ -144,7 +157,9 @@ namespace NokiaT9Task
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             var NewText = MyText.SelectedText;
-            Words.Add(NewText.Replace(" ", "-"));
+            if (!string.IsNullOrWhiteSpace(NewText))
+                //Words.Add(NewText.Replace(" ", "-"));
+                Words.Add(NewText);
         }
     }
 }

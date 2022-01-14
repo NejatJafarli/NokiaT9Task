@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NokiaT9Task"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="1000" Width="350">
     <Grid>
         <Grid.RowDefinitions>
@@ -12,7 +13,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox  SelectionBrush="Black" SelectionOpacity="0.9" TextWrapping="Wrap" PreviewKeyDown="MyText_PreviewKeyDown" Name="MyText"  Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  TextChanged="Any_TextChanged" Margin="5" FontSize="40" ></TextBox>
+        <TextBox  AcceptsReturn="False" SelectionBrush="Black" SelectionOpacity="0.9" TextWrapping="Wrap" PreviewKeyDown="MyText_PreviewKeyDown" Name="MyText"  Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  TextChanged="Any_TextChanged" Margin="5" FontSize="40" ></TextBox>
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
             <Button Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" >
                 <Image Source="https://img.icons8.com/ios-filled/200/000000/long-arrow-left.png" Margin="20"/>
