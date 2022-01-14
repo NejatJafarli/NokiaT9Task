@@ -61,6 +61,11 @@ namespace NokiaT9Task
             Words.Add("Tesla");
             Words.Add("Bmw");
             Words.Add("Mercedes");
+            Words.Add("Visual-Studio-2022-Is-Best");
+            Words.Add("IntelliCode");
+            Words.Add("NokiaT9");
+            Words.Add("Threads");
+            Words.Add("Tpl-Task");
 
 
 
@@ -73,15 +78,10 @@ namespace NokiaT9Task
 
         }
         public bool Ready { get; set; } = false;
-
+        public bool WorkOneTime { get; set; } = true;
         private void Any_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (Ready)
-            {
-                e.Handled = true;
-                return;
-            }
-            if (IsBack)
             {
                 e.Handled = true;
                 return;
@@ -90,7 +90,14 @@ namespace NokiaT9Task
             //     MyText.Document.ContentEnd).Text;
             var StartPosition = Text.Length;
             var NewText = MyText.Text.Split(' ')[MyText.Text.Split(' ').Length - 1];
-            var CursorPosition = StartPosition;
+            //var CursorPosition = StartPosition;
+            if (IsBack)
+            {
+                //var a= NewText.Remove(NewText.Length,Text.Length);
+                //MessageBox.Show(a);
+                //e.Handled = true;
+                //return;
+            }
             if (NewText == "")
             {
                 e.Handled = true;
@@ -104,6 +111,20 @@ namespace NokiaT9Task
             {
                 this.Dispatcher.Invoke(() =>
                 {
+                    if (IsBack && WorkOneTime)
+                    {
+                        var NewTextLength = NewText.Length;
+                        NewText = NewText.Remove(NewTextLength - 1);
+                        Text = Text.Remove(NewTextLength - 1);
+                        StartPosition = Text.Length;
+
+                        WorkOneTime = false;
+                    }
+                    else if(IsBack)
+                    {
+                        WorkOneTime = true;
+                        return;
+                    }
                     SameWords.Clear();
                     Ready = true;
                     for (int i = 0; i < Words.Count; i++)
@@ -114,7 +135,7 @@ namespace NokiaT9Task
                     if (SameWords.Count != 0)
                     {
                         var Word = SameWords[0];
-                        var Remove = MyText.Text.Split(' ')[MyText.Text.Split(' ').Length - 1];
+                        var Remove = NewText;
                         var MyIndex = Word.IndexOf(Remove);
                         Word = Word.Remove(MyIndex, Remove.Length);
                         Text += Word;
@@ -142,7 +163,7 @@ namespace NokiaT9Task
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MyText.Text = "";
+           
         }
 
         public bool IsBack { get; set; }
@@ -158,8 +179,11 @@ namespace NokiaT9Task
         {
             var NewText = MyText.SelectedText;
             if (!string.IsNullOrWhiteSpace(NewText))
-                //Words.Add(NewText.Replace(" ", "-"));
-                Words.Add(NewText);
+                Words.Add(NewText.Replace(" ", "-"));
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
