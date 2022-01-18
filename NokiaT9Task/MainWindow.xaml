@@ -13,34 +13,13 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox  AcceptsReturn="False" SelectionBrush="Black" SelectionOpacity="0.9" TextWrapping="Wrap" PreviewKeyDown="MyText_PreviewKeyDown" Name="MyText"  Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  TextChanged="Any_TextChanged" Margin="5" FontSize="40" ></TextBox>
+        <TextBox AcceptsReturn="False" SelectionBrush="Black" SelectionOpacity="0.9" TextWrapping="Wrap"  Name="MyText"  Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  TextChanged="Any_TextChanged" Margin="5" FontSize="40" KeyDown="MyText_KeyDown" ></TextBox>
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
-            <Button Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" >
-                <Image Source="https://img.icons8.com/ios-filled/200/000000/long-arrow-left.png" Margin="20"/>
-            </Button>
-            <Button  Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" >
-                <Image Source="https://img.icons8.com/ios-filled/200/000000/long-arrow-up.png" Margin="20"/>
-            </Button>
-            <Button  Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" >
-                <Image Source="https://img.icons8.com/ios-filled/200/000000/long-arrow-right.png" Margin="20" />
-            </Button>
-            <Button Click="Button_Click_2" Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" Content="Add"></Button>
-            <Button  Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" >
-                <Image Source="https://img.icons8.com/ios-filled/200/000000/long-arrow-down.png" Margin="20" />
-            </Button>
-            <Button Click="Button_Click_1" Width="70" Height="70" Margin="25 15 0 0" FontSize="30" VerticalAlignment="Center" HorizontalContentAlignment="Center" Content="Back"></Button>
-            <Separator Width="308"></Separator>
-            <Button Width="70" Height="70" Margin="25 15 0 0">1</Button>
-            <Button Width="70" Height="70" Margin="25 15 0 0">2</Button>
-            <Button Width="70" Height="70" Margin="25 15 0 0">3</Button>
-            <Button Width="70" Height="70" Margin="25 15 0 0">4</Button>
-            <Button Width="70" Height="70" Margin="25 15 0 0">5</Button>
-            <Button Width="70" Height="70" Margin="25 15 0 0">6</Button>
-            <Button Width="70" Height="70" Margin="25 15 0 0">7</Button>
-            <Button Width="70" Height="70" Margin="25 15 0 0">8</Button>
-            <Button Width="70" Height="70" Margin="25 15 0 0">9</Button>
+            <Button Click="Button_Click_2"  Height="70" Margin="5" FontSize="20" VerticalAlignment="Center" HorizontalContentAlignment="Center" Content="Select And Add New Word"></Button>
         </WrapPanel>
-
-        <ListBox Grid.Row="2" ItemsSource="{Binding SameWords,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></ListBox>
+        <DockPanel    Grid.Row="2 " >
+            <Label DockPanel.Dock="Top" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"> Posibble Words</Label>
+            <ListBox Name="WordsLB" Grid.Row="2" ItemsSource="{Binding SameWords,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></ListBox>
+        </DockPanel>
     </Grid>
 </Window>

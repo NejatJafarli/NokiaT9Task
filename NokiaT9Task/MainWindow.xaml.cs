@@ -67,7 +67,7 @@ namespace NokiaT9Task
             Words.Add("Threads");
             Words.Add("Tpl-Task");
 
-
+            SameWords = new ObservableCollection<string>(Words);
 
             //var temp = "Mellim";
             //var Remove = "Mel";
@@ -86,25 +86,18 @@ namespace NokiaT9Task
                 e.Handled = true;
                 return;
             }
-            //Text = new TextRange(MyText.Document.ContentStart,
             if (IsBack)
             {
                 e.Handled = true;
                 return;
             }
-            //     MyText.Document.ContentEnd).Text;
             var StartPosition = Text.Length;
             var NewText = MyText.Text.Split(' ')[MyText.Text.Split(' ').Length - 1];
-            var CursorPosition = StartPosition;
             if (NewText == "")
             {
                 e.Handled = true;
                 return;
             }
-            //Text = "SALAM";
-            //MyText.SelectionStart = 2;
-            //MyText.SelectionLength = Text.Length-2;
-
             Task.Run(() =>
             {
                 this.Dispatcher.Invoke(() =>
@@ -112,10 +105,8 @@ namespace NokiaT9Task
                     SameWords.Clear();
                     Ready = true;
                     for (int i = 0; i < Words.Count; i++)
-                    {
                         if (Words[i].StartsWith(NewText))
                             SameWords.Add(Words[i]);
-                    }
                     if (SameWords.Count != 0)
                     {
                         var Word = SameWords[0];
@@ -145,25 +136,21 @@ namespace NokiaT9Task
             //range.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.White);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            MyText.Text = "";
-        }
-
+        private void Button_Click_1(object sender, RoutedEventArgs e)=>MyText.Text = "";
         public bool IsBack { get; set; }
-        private void MyText_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Back)
-                IsBack = true;
-            else
-                IsBack = false;
-        }
-
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             var NewText = MyText.SelectedText;
             if (!string.IsNullOrWhiteSpace(NewText))
                 Words.Add(NewText.Replace(" ", "-"));
+        }
+
+        private void MyText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Back)
+                IsBack = true;
+            else
+                IsBack = false;
         }
     }
 }
