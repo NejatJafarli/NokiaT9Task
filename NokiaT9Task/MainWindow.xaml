@@ -13,7 +13,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBox AcceptsReturn="False" SelectionBrush="Black" SelectionOpacity="0.9" TextWrapping="Wrap"  Name="MyText"  Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  TextChanged="Any_TextChanged" Margin="5" FontSize="40" KeyDown="MyText_KeyDown" ></TextBox>
+        <TextBox AcceptsReturn="False"  SelectionOpacity="0.9" TextWrapping="Wrap"  Name="MyText"  Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  TextChanged="Any_TextChanged" Margin="5" FontSize="40" PreviewKeyDown="MyText_KeyDown" ></TextBox>
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
             <Button Click="Button_Click_2"  Height="70" Margin="5" FontSize="20" VerticalAlignment="Center" HorizontalContentAlignment="Center" Content="Select And Add New Word"></Button>
         </WrapPanel>
