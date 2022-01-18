@@ -69,13 +69,6 @@ namespace NokiaT9Task
 
             SameWords = new ObservableCollection<string>(Words);
 
-            //var temp = "Mellim";
-            //var Remove = "Mel";
-            //var index=temp.IndexOf(Remove);
-            //temp=temp.Remove(index, Remove.Length);
-            //MessageBox.Show(temp);
-            //MessageBox.Show(temp.Split(" ")[temp.Split(" ").Length-1]);
-
         }
         public bool Ready { get; set; } = false;
 
@@ -121,8 +114,8 @@ namespace NokiaT9Task
             });
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
             //var check = new TextRange(Any.Document.ContentStart,
             //     Any.Document.ContentEnd);
             //TextPointer start = Any.Document.ContentStart;
@@ -134,7 +127,7 @@ namespace NokiaT9Task
 
             //range.ApplyPropertyValue(TextElement.BackgroundProperty, Brushes.Black);
             //range.ApplyPropertyValue(TextElement.ForegroundProperty, Brushes.White);
-        }
+        //}
 
         private void Button_Click_1(object sender, RoutedEventArgs e)=>MyText.Text = "";
         public bool IsBack { get; set; }
